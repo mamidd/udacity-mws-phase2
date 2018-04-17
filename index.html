@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Normalize.css for better cross-browser consistency -->
+  <!-- it doesn't work beacause give a 404 error, i put another one -->
+  <!--<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />-->
+  <link rel="stylesheet" src="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+  <script charset="utf-8" src="js/swController.js"></script>
+  <title>Restaurant Reviews</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1><a href="/">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section id="map-container" class="map-container">
+      <div id="map" class="map" role="application" aria-label="Google Maps with restaurants"></div>
+    </section>
+    <section>
+      <div class="filter-options-container">
+        <div class="filter-options">
+          <h2>Filter Results</h2>
+          <select id="neighborhoods-select" class="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Filter restaurants">
+            <option value="all">All Neighborhoods</option>
+          </select>
+          <select id="cuisines-select" class="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Filter Cuisines">
+            <option value="all">All Cuisines</option>
+          </select>
+        </div>
+      </div>
+      <ul id="restaurants-list" class="restaurants-list"></ul>
+    </section>
+  </main>
+
+  <script charset="utf-8" src="js/dbhelper.js"></script>
+  <script charset="utf-8" src="js/main.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoMwk2TsIPUDxC5Lfsn56g29_OuAX7ks&libraries=places&callback=initMap"></script>
+
+
+  <footer id="footer">
+    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>

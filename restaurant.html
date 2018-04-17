@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Normalize.css for better cross-browser consistency -->
+  <!-- it doesn't work beacause give a 404 error, i put another one -->
+  <!--<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />-->
+  <link rel="stylesheet" src="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <!-- Main CSS file -->
+  <link rel="stylesheet" href="css/styles.css">
+  <script charset="utf-8" src="js/swController.js"></script>
+  <title>Restaurant Info</title>
+</head>
+
+<body class="inside">
+  <!-- Beginning header -->
+  <header>
+    <!-- Beginning nav -->
+    <nav>
+      <h1><a href="/">Restaurant Reviews</a></h1>
+    </nav>
+    <nav aria-label="Breadcrumb">
+      <!-- Beginning breadcrumb -->
+      <div class="breadcrumb-container">
+        <ul id="breadcrumb" class="breadcrumb">
+          <li><a href="/">Home</a></li>
+        </ul>
+      </div>
+      <!-- End breadcrumb -->
+    </nav>
+    <!-- End nav -->
+  </header>
+  <!-- End header -->
+
+  <!-- Beginning main -->
+  <main id="maincontent">
+    <!-- Beginning restaurant -->
+    <article id="restaurant-container" class="restaurant-container">
+      <h2 id="restaurant-name" class="restaurant-name"></h2>
+      <picture id="restaurant-img" class="restaurant-img"></picture>
+      <p id="restaurant-cuisine" class="restaurant-cuisine"></p>
+      <p id="restaurant-address" class="restaurant-address"></p>
+      <table id="restaurant-hours" class="restaurant-hours"></table>
+
+      <!-- Beginning map -->
+      <section id="map-container" class="map-container">
+        <div id="map" class="map" role="application" aria-label="Google Map Restaurant location"></div>
+      </section>
+      <!-- End map -->
+    </article>
+    <!-- end restaurant -->
+
+    <!-- Beginning reviews -->
+    <section id="reviews-container" class="reviews-container">
+      <ul id="reviews-list" class="reviews-list"></ul>
+    </section>
+    <!-- End reviews -->
+  </main>
+  <!-- End main -->
+
+  <!-- Beginning footer -->
+  <footer id="footer">
+    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+  <!-- End footer -->
+
+  <!-- Beginning scripts -->
+  <!-- Database helpers -->
+  <script src="js/dbhelper.js"></script>
+  <!-- Main javascript file -->
+  <script src="js/restaurant_info.js"></script>
+  <!-- Google Maps -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoMwk2TsIPUDxC5Lfsn56g29_OuAX7ks&libraries=places&callback=initMap"></script>
+  <!-- End scripts -->
+
+</body>
+
+</html>
