@@ -1,4 +1,4 @@
-var staticCacheName = 'restaurant-v1';
+var staticCacheName = 'restaurant-v2';
 var contentImgsCache = 'content-imgs';
 var allCaches = [
   staticCacheName
@@ -11,7 +11,6 @@ self.addEventListener('install', function(event) {
         'js/main.js',
         'js/dbhelper.js',
         'js/restaurant_info.js',
-        'data/restaurants.json',
         '/index.html',
         '/restaurant.html',
         'css/styles.css'
@@ -60,6 +59,16 @@ self.addEventListener('fetch', function(event) {
 
     if (requestUrl.pathname.endsWith('.jpg')) {
       event.respondWith(serveImg(event.request));
+      return;
+    }
+  }else{
+    if (requestUrl.pathname.endsWith('/restaurants')) {
+      fetch(event.request)
+      .then(response => response.json())
+      .then(function(data){
+        console.log(event.request);
+        console.log(data);
+      });
       return;
     }
   }

@@ -17,6 +17,7 @@
   "dependencies": {
     "gm": "^1.23.1",
     "grunt-cli": "^1.2.0",
-    "grunt-responsive-images": "^0.1.9"
+    "grunt-responsive-images": "^0.1.9",
+    "idb": "^2.1.1"
   }
 }
