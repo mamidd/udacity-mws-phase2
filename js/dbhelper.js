@@ -15,6 +15,7 @@ class DBHelper {
   static get SERVER_API_URL() {
     const port = 1337 // Change this to your server port
     return `http://localhost:${port}/restaurants`;
+    // return `/restaurants`;
   }
 
   /**
@@ -24,6 +25,8 @@ class DBHelper {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', DBHelper.SERVER_API_URL);
     xhr.onload = () => {
+      // console.log("loaded");
+      // console.log(xhr);
       if (xhr.status === 200) { // Got a success response from server!
         const json = JSON.parse(xhr.responseText);
         const restaurants = json;
@@ -33,8 +36,26 @@ class DBHelper {
         callback(error, null);
       }
     };
+    xhr.onerror = () => {
+      console.log('error');
+      console.log(xhr);
+    };
     xhr.send();
   }
+  
+  // static fetchRestaurants(callback) {
+  //   return fetch(DBHelper.SERVER_API_URL)
+  //   .then(function(response){
+  //     if (response.status === 200) { // Got a success response from server!
+  //       const json = response.json();
+  //       const restaurants = json;
+  //       callback(null, restaurants);
+  //     } else { // Oops!. Got an error from server.
+  //       const error = (`Request failed. Returned status of ${response.status}`);
+  //       callback(error, null);
+  //     }
+  //   });
+  // }
 
   /**
    * Fetch a restaurant by its ID.
@@ -154,7 +175,7 @@ class DBHelper {
   /**
    * Restaurant image URL.
    */
-  static imageUrlForRestaurant(restaurant) {    
+  static imageUrlForRestaurant(restaurant) {
     return (`/images/${restaurant.id}.jpg`);
   }
 
