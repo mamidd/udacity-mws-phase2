@@ -7,26 +7,18 @@ let autoprefixer = require('gulp-autoprefixer');
 let concat = require('gulp-concat');
 let uglify = require('gulp-uglify-es').default;
 let cleanCSS = require('gulp-clean-css');
-let pump = require('pump');
 
 
 gulp.task('copy-styles', copyStylesTask);
 //gulp.task('lint', lintTask);
 gulp.task('copy-html', copyHtmlTask);
-gulp.task('copy-images', copyImagesTask);
 gulp.task('copy-scripts', copyScriptsTask);
 gulp.task('scripts-dist', scriptsDistTask);
-gulp.task('default', gulp.series(['copy-html', 'copy-images', 'copy-styles', 'copy-scripts', 'scripts-dist']));
+gulp.task('default', gulp.series(['copy-html', 'copy-styles', 'copy-scripts', 'scripts-dist']));
 
 function copyHtmlTask(done) {
   gulp.src('./*.html')
     .pipe(gulp.dest('./dist'));
-  done();
-}
-
-function copyImagesTask(done) {
-  gulp.src('./images/*')
-    .pipe(gulp.dest('./dist/img'));
   done();
 }
 
