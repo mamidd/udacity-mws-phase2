@@ -1,36 +1,20 @@
 var staticCacheName = 'restaurant-v2';
-// var contentImgsCache = 'content-imgs';
+var basepath = '/dist/';
 var allCaches = [
   staticCacheName
 ];
 
-// let dbPromise = new Promise((resolve, reject) => {
-//   const openreq = indexedDB.open('restaurant-db', 1);
-//
-//   openreq.onerror = () => {
-//     reject(openreq.error);
-//   };
-//
-//   openreq.onupgradeneeded = () => {
-//     openreq.result.createObjectStore('restaurants', { keyPath: 'id' });
-//     //openreq.result.transaction.objectStore('restaurants').createIndex('byId', 'id');
-//   };
-//
-//   openreq.onsuccess = () => {
-//     resolve(openreq.result);
-//   };
-// });
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
-        'js/main.js',
-        'js/dbhelper.js',
-        'js/restaurant_info.js',
-        '/index.html',
-        '/restaurant.html',
-        'css/styles.css'
+        basepath+'js/allIndex.js',
+        basepath+'js/allRestaurant.js',
+        basepath+'js/library/idb.js',
+        basepath+'index.html',
+        basepath+'restaurant.html',
+        basepath+'css/styles.css'
       ]);
     })
   );
@@ -54,14 +38,16 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   var requestUrl = new URL(event.request.url);
 
+  console.log(requestUrl.pathname);
+
   if (requestUrl.origin === location.origin) {
-    if (requestUrl.pathname === '/') {
-      event.respondWith(caches.match('/index.html'));
+    if (requestUrl.pathname === basepath) {
+      event.respondWith(caches.match(basepath+'index.html'));
       return;
     }
 
-    if (requestUrl.pathname.includes('/restaurant.html')) {
-      event.respondWith(caches.match('/restaurant.html'));
+    if (requestUrl.pathname.includes(basepath+'restaurant.html')) {
+      event.respondWith(caches.match(basepath+'restaurant.html'));
       return;
     }
 
